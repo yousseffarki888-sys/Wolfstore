@@ -1,358 +1,0 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سترة النينجا الأنيقة | Stor Wolf</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #2c3e50; /* أسود/رمادي داكن للنصوص والعناصر الرئيسية */
-            --secondary-color: #f39c12; /* برتقالي/ذهبي لشعار الذئب أو النقاط البارزة */
-            --background-color: #f4f4f4; /* خلفية بيضاء/رمادية فاتحة */
-            --button-success: #27ae60; /* أخضر لزر الواتساب والشراء */
-        }
-        
-        body {
-            font-family: 'Cairo', sans-serif;
-            background-color: var(--background-color);
-            color: var(--primary-color);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #ffffff;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-        }
-        
-        /* القسم العلوي والشعار */
-        .header {
-            text-align: center;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #eee;
-            margin-bottom: 20px;
-        }
-        
-        .logo-text {
-            font-size: 2.2em;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 5px;
-            letter-spacing: 1px;
-        }
-        
-        .logo-subtext {
-            font-size: 0.9em;
-            color: #7f8c8d;
-        }
-        
-        /* معرض الصور */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .gallery-main-image {
-            grid-column: 1 / -1; /* الصورة الرئيسية تأخذ عرض كامل الصف */
-            text-align: center;
-        }
-        
-        .gallery img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-        
-        .gallery img:hover {
-            transform: scale(1.02);
-        }
-        
-        /* تفاصيل المنتج */
-        .product-details h1 {
-            font-size: 1.8em;
-            color: var(--primary-color);
-            border-bottom: 3px solid var(--secondary-color);
-            display: inline-block;
-            padding-bottom: 5px;
-            margin-top: 0;
-        }
-        
-        .description-list {
-            list-style: none;
-            padding: 0;
-            margin: 15px 0;
-        }
-        
-        .description-list li {
-            background: #ecf0f1;
-            padding: 10px 15px;
-            margin-bottom: 8px;
-            border-radius: 5px;
-            font-size: 1em;
-        }
-        
-        .description-list li strong {
-            color: var(--primary-color);
-        }
-        
-        /* السعر */
-        .price-section {
-            text-align: center;
-            margin: 30px 0;
-            padding: 15px;
-            background: var(--primary-color);
-            color: #ffffff;
-            border-radius: 8px;
-        }
-        
-        .price-section .price {
-            font-size: 2.5em;
-            font-weight: 700;
-            margin: 0;
-            color: var(--secondary-color); /* السعر بلون بارز */
-        }
-        
-        .price-section .currency {
-            font-size: 1.2em;
-            font-weight: 400;
-        }
-        
-        /* نموذج الطلب */
-        .order-form h2 {
-            text-align: center;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-        }
-
-        .order-form label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 700;
-        }
-
-        .order-form input {
-            width: 95%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 1em;
-            transition: border-color 0.3s;
-            text-align: right; /* محاذاة النص لليمين للحقول النصية */
-        }
-
-        .order-form input:focus {
-            border-color: var(--secondary-color);
-            outline: none;
-        }
-        
-        /* الأزرار */
-        .buttons-group {
-            text-align: center;
-            margin-top: 30px;
-        }
-        
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 10px;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.2em;
-            font-weight: 700;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            text-decoration: none;
-            color: #ffffff;
-        }
-
-        .btn-buy {
-            background-color: var(--secondary-color); /* لون الشراء البرتقالي/الذهبي */
-        }
-        
-        .btn-buy:hover {
-            background-color: #e67e22;
-            transform: translateY(-2px);
-        }
-
-        .btn-home {
-            background-color: #bdc3c7; /* لون رمادي لزر العودة */
-            color: var(--primary-color);
-        }
-
-        .btn-home:hover {
-            background-color: #95a5a6;
-            transform: translateY(-2px);
-        }
-
-        /* زر الواتساب العائم */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
-
-        .whatsapp-float a {
-            display: block;
-            background-color: var(--button-success);
-            color: white;
-            padding: 10px;
-            border-radius: 50%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            font-size: 2em;
-            line-height: 1;
-            transition: background-color 0.3s, transform 0.2s;
-            text-decoration: none;
-        }
-
-        .whatsapp-float a:hover {
-            background-color: #2ecc71;
-            transform: scale(1.1);
-        }
-
-        /* تعديلات للموبايل */
-        @media (max-width: 600px) {
-            .container {
-                margin: 10px;
-                padding: 15px;
-            }
-            .gallery {
-                grid-template-columns: 1fr; /* عرض صورة واحدة في الصف على الموبايل */
-            }
-            .gallery-main-image {
-                grid-column: 1;
-            }
-            .product-details h1 {
-                font-size: 1.5em;
-            }
-            .price-section .price {
-                font-size: 2em;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <div class="container">
-        
-        <div class="header">
-            <img src="1000016336.jpg" alt="شعار الذئب المتوج - Stor Wolf" style="width: 80px; height: auto; margin-bottom: 10px;">
-            <div class="logo-text">Stor Wolf</div>
-            <div class="logo-subtext">للأناقة والتميز</div>
-        </div>
-        
-        <div class="gallery">
-            <div class="gallery-main-image">
-                <img src="1000015789.jpg" alt="سترة النينجا الأنيقة - الصورة الرئيسية">
-            </div>
-            <img src="1000015395.jpg" alt="تفاصيل السحاب المعدني للسترة">
-            <img src="1000015393.jpg" alt="تفاصيل جيب الكنغر الأمامي للسترة">
-            <img src="1000015394.jpg" alt="تفاصيل طرف الكم المضلع (Rib)">
-        </div>
-        
-        <div class="product-details">
-            <h1>✨ سترة النينجا الأنيقة (الكمامة المدمجة)</h1>
-            
-            <p><strong>استعد لأجواء الشتاء بلمسة من الغموض والأناقة.</strong> سترة النينجا من **Stor Wolf** ليست مجرد ملابس، بل هي تعبير عن القوة والتميز، مع تصميم فريد يضمن لك الدفء والراحة القصوى.</p>
-            
-            <ul class="description-list">
-                <li>✅ <strong>الجودة والمتانة:</strong> مصنوعة من **أفضل أنواع التوب (Cotton Fleece)** لتدفئة فائقة دون الشعور بالثقل.</li>
-                <li>✅ <strong>ضمان عدم الحبوب:</strong> نضمن أن الخامة لا تتشكل بها "حبوب" (Pilling) بعد الغسيل، لتبقى السترة كالجديدة.</li>
-                <li>✅ <strong>طبعة احترافية:</strong> شعار **الذئب** مطبوع بتقنية عالية ومقاومة للغسيل.</li>
-                <li>✅ <strong>نسخة مطابقة:</strong> تحصل على نفس المنتج تماماً الظاهر في الصور (نسخة 100% مطابقة للأصل).</li>
-                <li>✅ <strong>تصميم النينجا:</strong> قبعة مزدوجة بسحاب علوي (كمامة) توفر حماية إضافية للوجه والرقبة.</li>
-                <li>✅ <strong>تفاصيل فاخرة:</strong> سحاب معدني قوي وناعم الملمس، وأطراف أكمام مضلعة لضبط المقاس.</li>
-            </ul>
-        </div>
-
-        <div class="price-section">
-            <p style="font-size: 1.1em; margin-bottom: 5px;">سعر السترة المميز:</p>
-            <p class="price">249 <span class="currency">درهم مغربي</span></p>
-            <p style="margin-top: 5px; font-size: 0.9em;">(تكلفة الشحن تضاف عند الطلب)</p>
-        </div>
-
-        <div class="order-form" id="order-section">
-            <h2>🛒 سارع بالطلب الآن واستفد من الدفع عند الاستلام</h2>
-            
-            <form id="ninja-order-form">
-                <label for="city">المدينة:</label>
-                <input type="text" id="city" name="city" placeholder="الدار البيضاء، الرباط..." required>
-                
-                <label for="district">الحي/الشارع:</label>
-                <input type="text" id="district" name="district" placeholder="لتسهيل عملية التوصيل" required>
-                
-                <label for="phone">رقم الهاتف:</label>
-                <input type="tel" id="phone" name="phone" placeholder="06XXXXXXXX" required pattern="[0-9]{10}">
-                
-                <div class="buttons-group">
-                    <button type="button" id="buy-btn" class="btn btn-buy">🔥 إتمام الطلب والدفع عند الاستلام</button>
-                    <a href="URL_الصفحة_الرئيسية_للمتجر" class="btn btn-home">العودة إلى الصفحة الرئيسية</a>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <div class="whatsapp-float">
-        <a href="#" id="whatsapp-float-btn" title="تواصل معنا عبر واتساب">
-            &#x1F4AC; 
-        </a>
-    </div>
-
-    <script>
-        // دالة لإرسال الطلب عبر الواتساب
-        document.getElementById('buy-btn').addEventListener('click', function() {
-            const city = document.getElementById('city').value;
-            const district = document.getElementById('district').value;
-            const phone = document.getElementById('phone').value;
-            const product = "سترة النينجا الأنيقة";
-            const price = "249 درهم";
-            const whatsappNumber = "212675522409"; // رقمك بالصيغة الدولية
-
-            if (city && district && phone) {
-                const message = `مرحباً Stor Wolf،
-أرغب في طلب منتج: ${product}
-السعر: ${price}
-*بيانات الشحن:*
-المدينة: ${city}
-الحي/الشارع: ${district}
-رقم الهاتف: ${phone}
-شكراً لكم.`;
-
-                const encodedMessage = encodeURIComponent(message);
-                const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-                
-                // فتح رابط الواتساب في نافذة جديدة
-                window.open(whatsappURL, '_blank');
-            } else {
-                alert("الرجاء ملء جميع حقول الطلب (المدينة، الحي، رقم الهاتف) لإتمام الشراء.");
-            }
-        });
-
-        // جعل زر الواتساب العائم يفعل نفس عملية الإرسال عند النقر عليه مباشرةً (إذا لم يتم ملء الفورم بعد، يوجه للنموذج)
-        document.getElementById('whatsapp-float-btn').addEventListener('click', function(e) {
-            e.preventDefault();
-            // يمكنك توجيه المستخدم لنموذج الطلب إذا لم يقم بملئه
-            const city = document.getElementById('city').value;
-            if (!city) {
-                document.getElementById('order-section').scrollIntoView({ behavior: 'smooth' });
-            } else {
-                // إذا كان النموذج مملوءاً، يمكن تنفيذ الطلب مباشرةً أيضاً
-                document.getElementById('buy-btn').click();
-            }
-        });
-    </script>
-
-</body>
-</html>
