@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Stor of Wolf — متجر الملابس</title>
+  <style>
+    :root{--accent:#1f6feb;--whatsapp:#25D366;--card-bg:#fff;--bg:#f4f6f8;--text:#111;--muted:#666;--radius:12px;font-family:"Tahoma","Segoe UI",system-ui,Arial,sans-serif}
+    html,body{height:100%;margin:0;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+    header{background:#000;color:#fff;padding:14px 18px;display:flex;align-items:center;gap:14px;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
+    .logo{width:64px;height:64px;border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;color:#000}
+    .site-title{font-size:20px;font-weight:900}
+    .container{max-width:980px;margin:22px auto;padding:0 16px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+    .product{background:var(--card-bg);border-radius:var(--radius);padding:14px;box-shadow:0 6px 20px rgba(8,20,40,0.06);display:flex;flex-direction:column;gap:12px}
+    .product img{width:100%;height:320px;object-fit:cover;border-radius:8px}
+    h2{margin:0;font-size:16px}
+    .price{color:#c62828;font-weight:800;font-size:18px}
+    .short{color:var(--muted);font-size:14px}
+    .actions{display:flex;gap:10px;align-items:center}
+    .btn{background:var(--accent);color:#fff;padding:10px 12px;border-radius:10px;text-decoration:none;border:0;cursor:pointer;font-weight:700}
+    .btn.secondary{background:#333}
+    .wa-btn{background:var(--whatsapp);padding:10px 12px;border-radius:10px;color:#fff;text-decoration:none;font-weight:800;display:inline-block}
+    .order-form{margin-top:8px;border-radius:10px;padding:12px;background:#fbfdff;border:1px solid rgba(34,88,255,0.04);display:none;gap:8px;flex-direction:column}
+    .order-form input,.order-form select,.order-form textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e5e7eb;font-size:14px;box-sizing:border-box}
+    .row{display:flex;gap:8px}
+    .row .col{flex:1}
+    footer{max-width:980px;margin:22px auto;padding:18px 16px;color:var(--muted);font-size:13px;text-align:center}
+    .note{background:#fff;padding:12px;border-radius:10px;margin-bottom:18px;border-left:4px solid var(--accent)}
+    @media(max-width:520px){.product img{height:220px}.row{flex-direction:column}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo" id="logoPlaceholder" title="لوغو Stor of Wolf">
+      <!-- ضع logo.png في نفس المجلد لظهور الشعار بدلاً من النص -->
+      LOGO
+    </div>
+    <div>
+      <div class="site-title">Stor of Wolf</div>
+      <div style="font-size:13px;color:#ddd">متجر لبيع الملابس — تواصل سريع عبر واتساب</div>
+    </div>
+    <div style="margin-left:auto">
+      <a id="waTop" class="wa-btn" href="#" target="_blank" rel="noopener">تواصل عبر واتساب</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="note">
+      استبدل الشعار بملف logo.png في نفس المجلد. لتعديل المنتجات عدّل مصفوفة <code>products</code> داخل السكربت أسفل الصفحة.
+    </div>
+
+    <section id="productsSection" class="grid" aria-live="polite"></section>
+
+    <div style="height:18px"></div>
+
+    <section class="note" id="shippingNote">
+      شحن داخل المغرب خلال 2–5 أيام. إرجاع خلال 7 أيام بشرط الحالة الأصلية.
+    </section>
+  </main>
+
+  <footer>
+    Stor of Wolf — للتواصل: <a id="waFooter" class="wa-btn" href="#" target="_blank" rel="noopener">اطلب عبر واتساب</a>
+  </footer>
+
+  <script>
+    // ====== إعدادات قابلة للتعديل ======
+    const WHATSAPP_NUMBER = "212675522409";
+    const shippingInfo = "شحن داخل المغرب خلال 2–5 أيام. إرجاع خلال 7 أيام بشرط الحالة الأصلية.";
+    const products = [
+      { id: "p1", title: "تيشرت أسود", price: 120, short: "تيشرت قطن 100% بقصّة مريحة", img: "https://via.placeholder.com/800x800?text=تيشرت+اسود", sizes: ["S","M","L","XL"], stock: 50 },
+      { id: "p2", title: "هودي رمادي بتطريز الدئب", price: 250, short: "هودي رمادي بتطريز الدئب؛ خامة عالية الجودة لا تترك حبوب مع الوقت، جودة عالمية", img: "1000015789.jpg", sizes: ["S","M","L","XL"], stock: 25 }
+    ];
+    // ====== نهاية الإعدادات ======
+
+    const productsSection = document.getElementById("productsSection");
+    const waTop = document.getElementById("waTop");
+    const waFooter = document.getElementById("waFooter");
+    const shippingNote = document.getElementById("shippingNote");
+    shippingNote.textContent = shippingInfo;
+
+    function escapeHtml(str){ return String(str).replace(/[&<>"']/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"}[s])); }
+    function makeWhatsAppUrl(number, text){ return `https://wa.me/${number}?text=${encodeURIComponent(text)}`; }
+
+    function createProductCard(p){
+      const card = document.createElement("article");
+      card.className = "product";
+      card.innerHTML = `
+        <img src="${p.img}" alt="${escapeHtml(p.title)}">
+        <div>
+          <h2>${escapeHtml(p.title)}</h2>
+          <div class="price">${p.price} درهم</div>
+          <div class="short">${escapeHtml(p.short)}</div>
+        </div>
+        <div class="actions">
+          <button class="btn order-toggle" data-id="${p.id}">اطلب الآن</button>
+          <a class="wa-btn quick-wa" href="#" data-id="${p.id}" aria-label="طلب عبر واتساب سريع">واتساب</a>
+        </div>
+        <div class="order-form" id="form-${p.id}">
+          <label><strong>تفاصيل الطلب</strong></label>
+          <div class="row">
+            <div class="col"><select id="size-${p.id}">${p.sizes.map(s=>`<option value="${s}">${s}</option>`).join("")}</select></div>
+            <div class="col"><input type="number" id="qty-${p.id}" min="1" value="1" placeholder="الكمية"></div>
+          </div>
+          <input type="text" id="name-${p.id}" placeholder="الاسم الكامل">
+          <input type="tel" id="phone-${p.id}" placeholder="رقم الهاتف">
+          <input type="text" id="city-${p.id}" placeholder="المدينة">
+          <textarea id="address-${p.id}" rows="2" placeholder="العنوان الكامل"></textarea>
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <button class="btn send-wa" data-id="${p.id}">أرسل الطلب للواتساب</button>
+            <button class="btn secondary cancel" data-id="${p.id}">إلغاء</button>
+          </div>
+        </div>
+      `;
+      return card;
+    }
+
+    function renderProducts(){
+      productsSection.innerHTML = "";
+      products.forEach(p => productsSection.appendChild(createProductCard(p)));
+      attachEventHandlers();
+    }
+
+    function attachEventHandlers(){
+      document.querySelectorAll(".order-toggle").forEach(btn=>{
+        btn.addEventListener("click", e=>{
+          const id = btn.dataset.id;
+          toggleForm(id, true);
+          document.getElementById(`name-${id}`).focus();
+        });
+      });
+      document.querySelectorAll(".cancel").forEach(btn=>{
+        btn.addEventListener("click", e=>{
+          const id = btn.dataset.id;
+          toggleForm(id, false);
+        });
+      });
+      document.querySelectorAll(".send-wa").forEach(btn=>{
+        btn.addEventListener("click", e=>{
+          const id = btn.dataset.id;
+          handleSendWhatsApp(id);
+        });
+      });
+      document.querySelectorAll(".quick-wa").forEach(a=>{
+        a.addEventListener("click", e=>{
+          e.preventDefault();
+          const id = a.dataset.id;
+          const p = products.find(x=>x.id===id);
+          const text = `السلام عليكم، أريد معلومات عن ${p.title}`;
+          window.open(makeWhatsAppUrl(WHATSAPP_NUMBER, text), "_blank");
+        });
+      });
+      waTop.addEventListener("click", e=>{ e.preventDefault(); window.open(makeWhatsAppUrl(WHATSAPP_NUMBER, "السلام عليكم، أريد معلومات عن المتجر"), "_blank"); });
+      waFooter.addEventListener("click", e=>{ e.preventDefault(); window.open(makeWhatsAppUrl(WHATSAPP_NUMBER, "السلام عليكم، أريد معلومات عن المتجر"), "_blank"); });
+    }
+
+    function toggleForm(id, show){
+      const node = document.getElementById(`form-${id}`);
+      if(!node) return;
+      node.style.display = show ? "flex" : "none";
+    }
+
+    function handleSendWhatsApp(id){
+      const p = products.find(x=>x.id===id);
+      if(!p) return;
+      const size = document.getElementById(`size-${id}`).value || "";
+      const qty = document.getElementById(`qty-${id}`).value || "1";
+      const name = document.getElementById(`name-${id}`).value || "";
+      const phone = document.getElementById(`phone-${id}`).value || "";
+      const city = document.getElementById(`city-${id}`).value || "";
+      const address = document.getElementById(`address-${id}`).value || "";
+      const msg = `السلام عليكم، أريد طلب ${p.title} - المقاس: ${size} - الكمية: ${qty} - الاسم: ${name} - الهاتف: ${phone} - المدينة: ${city} - العنوان: ${address}`;
+      window.open(makeWhatsAppUrl(WHATSAPP_NUMBER, msg), "_blank");
+    }
+
+    // render on load
+    renderProducts();
+  </script>
+</body>
+</html>
