@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>هودي الذئب الأسطوري | stor of Wolf</title>
+    <style>
+        /* CSS Styling - تصميم الصفحة */
+        :root {
+            --primary-color: #28a745; /* لون الواتساب/الزر */
+            --dark-bg: #111111; /* خلفية داكنة جداً */
+            --text-color: #f0f0f0; /* لون النص الفاتح */
+            --secondary-text: #aaaaaa;
+            --price-color: #e63946; /* لون السعر */
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            text-align: right;
+            line-height: 1.6;
+        }
+
+        /* Header / شريط التنقل العلوي */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid #333;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-text h1 {
+            font-size: 24px;
+            margin: 0;
+            font-weight: bold;
+            color: #ffffff;
+        }
+        
+        .logo-text p {
+            font-size: 14px;
+            margin: 0;
+            color: var(--secondary-text);
+        }
+
+        .logo-img {
+            width: 35px;
+            height: 35px;
+            margin-left: 10px;
+            /* Placeholder for the wolf logo image */
+            content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23fff"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-2.88-.41-5.22-2.85-5.91-5.74.83.21 1.7.32 2.6.32 2.5 0 4.8-.8 6.64-2.22.46 1.45.69 3.06.69 4.78 0 1.25-.17 2.47-.5 3.66L13 19.93zM12 4c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z"/></svg>');
+        }
+
+        .whatsapp-button-top {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+        }
+        
+        .whatsapp-icon {
+            margin-right: 5px;
+            /* Simple phone icon placeholder */
+            content: '📞';
+        }
+
+        /* Product Section - قسم المنتج */
+        .product-container {
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .product-image-area {
+            background-color: #333;
+            height: 400px; /* حجم افتراضي للعرض */
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .product-image-area img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Product Info - تفاصيل المنتج */
+        .product-info h2 {
+            font-size: 28px;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+
+        .price-tag {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 20px;
+        }
+
+        .current-price {
+            font-size: 36px;
+            color: var(--price-color);
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .old-price {
+            font-size: 18px;
+            color: var(--secondary-text);
+            text-decoration: line-through;
+        }
+
+        .limited-stock {
+            background-color: #ffd700;
+            color: #000;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 14px;
+            margin-right: 15px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .description-box {
+            background-color: #222;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .description-box h3 {
+            color: var(--primary-color);
+            font-size: 20px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 5px;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-list li {
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: var(--text-color);
+        }
+
+        .feature-list li strong {
+            color: #ffffff;
+        }
+        
+        .feature-list li::before {
+            content: "✅";
+            margin-left: 10px;
+        }
+        
+        /* Order Form - نموذج الطلب */
+        .order-form {
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .order-form h3 {
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--secondary-text);
+            font-size: 14px;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #444;
+            border-radius: 8px;
+            background-color: #333;
+            color: var(--text-color);
+            box-sizing: border-box;
+            font-size: 16px;
+            text-align: right;
+        }
+        
+        /* CTA Button - زر الطلب */
+        .cta-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            border: none;
+            border-radius: 8px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+            text-decoration: none; /* لزر الواتساب */
+        }
+        
+        .cta-button:hover {
+            background-color: #218838;
+        }
+        
+        /* Footer - التذييل */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            font-size: 12px;
+            color: #555;
+            border-top: 1px solid #222;
+        }
+
+        /* WhatsApp Message Logic - منطق رسالة الواتساب */
+        .hidden-form {
+            display: none;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <a href="https://wa.me/212675522409" class="whatsapp-button-top">
+            <span class="whatsapp-icon"></span>
+            تواصل عبر واتساب
+        </a>
+        <div class="logo-section">
+            <div class="logo-text">
+                <h1>stor of Wolf</h1>
+                <p>متجر الذئب الأسطوري</p>
+            </div>
+            <div class="logo-img"></div> 
+            </div>
+    </header>
+
+    <div class="product-container">
+        
+        <div class="product-image-area">
+            <p style="color:white; font-size:18px;">مكان صورة المنتج هنا (يرجى إدراج رابط الصورة)</p>
+        </div>
+
+        <div class="product-info">
+            <h2>هودي الذئب الأسطوري (النسخة العالمية)</h2>
+
+            <div class="price-tag">
+                <span class="current-price">249 درهم</span>
+                <span class="old-price">250 $ USD</span>
+                <span class="limited-stock">كمية محدودة!</span>
+            </div>
+
+            <div class="description-box">
+                <h3>لماذا هذا الهودي هو الأفضل؟</h3>
+                <ul class="feature-list">
+                    <li>**جودة عالمية طبق الأصل:** تم تصميم الهودي ليحاكي الجودة والمواصفات للنسخ الأصلية التي يصل سعرها إلى **250 دولار أمريكي**.</li>
+                    <li>**ضمان ضد التكوير:** نسيج متين ومخملي معالج بضمان ألا **يترك حبوبًا (Pilling) مع مرور الوقت**، جودة ممتازة تدوم طويلاً.</li>
+                    <li>**تصميم القبية المزدوجة (غطاء الرأس):** القبية مخدومة **بطبقتين من القماش**؛ الطبقة الداخلية ناعمة ومريحة وغير خانقة، والطبقة الخارجية متينة ودافئة.</li>
+                    <li>**طبعة الذئب الأسطورية:** تتميز الطبعة الموضوعة على القلب بتمثيلها الرائع للذئب، **رمز القوة والحرية والشموخ**. طبعة احترافية بجودة عالية لا تتأثر بالغسيل.</li>
+                    <li>**متانة ونعومة فائقة:** توازن مثالي بين المتانة المطلوبة وقماش ناعم الملمس يمنحك الراحة طوال اليوم.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="order-form">
+            <h3>أكمل معلوماتك لطلب الهودي الآن:</h3>
+            <form id="whatsapp-order-form">
+                <div class="form-group">
+                    <label for="name">الاسم الكامل:</label>
+                    <input type="text" id="name" name="name" required placeholder="مثال: أحمد محمد">
+                </div>
+                <div class="form-group">
+                    <label for="phone">رقم الهاتف (ضروري):</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="06XXXXXXXX">
+                </div>
+                <div class="form-group">
+                    <label for="city">المدينة:</label>
+                    <input type="text" id="city" name="city" required placeholder="مثال: الدار البيضاء">
+                </div>
+                
+                <button type="submit" class="cta-button">
+                    <span class="whatsapp-icon" style="font-size: 24px;"></span>
+                    اطلب الآن عبر واتساب! (249 درهم فقط)
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 stor of Wolf. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script>
+        document.getElementById('whatsapp-order-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // منع الإرسال الافتراضي
+
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const city = document.getElementById('city').value;
+            const myNumber = "212675522409"; // رقمك لتلقي الطلبات
+
+            // صياغة رسالة الطلب
+            const message = `
+*⚡️ طلب جديد من stor of Wolf ⚡️*
+
+*المنتج:* هودي الذئب الأسطوري
+*السعر:* 249 درهم
+*الكمية:* 1
+
+*بيانات الزبون:*
+الاسم: ${name}
+الهاتف: ${phone}
+المدينة: ${city}
+
+المرجو تأكيد الطلب مع الزبون.
+            `.trim();
+
+            // إنشاء رابط الواتساب المشفر
+            const whatsappLink = `https://wa.me/${myNumber}?text=${encodeURIComponent(message)}`;
+
+            // فتح الواتساب
+            window.open(whatsappLink, '_blank');
+        });
+        
+        // ربط زر الواتساب العلوي أيضًا برقمك
+        const topWhatsappBtn = document.querySelector('.whatsapp-button-top');
+        topWhatsappBtn.href = "https://wa.me/212675522409";
+    </script>
+</body>
+</html>
