@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>هودي الذئب الأسطوري | stor of Wolf</title>
+    <style>
+        /* CSS Styling - تصميم الصفحة */
+        :root {
+            --primary-color: #28a745; /* لون الواتساب/الزر */
+            --dark-bg: #111111; /* خلفية داكنة جداً */
+            --text-color: #f0f0f0; /* لون النص الفاتح */
+            --secondary-text: #aaaaaa;
+            --price-color: #e63946; /* لون السعر */
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            text-align: right;
+            line-height: 1.6;
+        }
+
+        /* Header / شريط التنقل العلوي */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid #333;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-text h1 {
+            font-size: 24px;
+            margin: 0;
+            font-weight: bold;
+            color: #ffffff;
+        }
+        
+        .logo-text p {
+            font-size: 14px;
+            margin: 0;
+            color: var(--secondary-text);
+        }
+
+        .logo-img {
+            width: 35px;
+            height: 35px;
+            margin-left: 10px;
+            /* للتأكد من ظهور الشعار بشكل دائري وواضح */
+            border-radius: 50%; 
+            object-fit: contain;
+        }
+
+        .whatsapp-button-top {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+        }
+        
+        .whatsapp-icon {
+            margin-right: 5px;
+            /* رمز الهاتف */
+            content: '📞';
+        }
+
+        /* Product Section - قسم المنتج */
+        .product-container {
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .product-image-area {
+            background-color: #333;
+            height: 400px; /* حجم افتراضي للعرض */
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .product-image-area img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Product Info - تفاصيل المنتج */
+        .product-info h2 {
+            font-size: 28px;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+
+        .price-tag {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 20px;
+        }
+
+        .current-price {
+            font-size: 36px;
+            color: var(--price-color);
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .old-price {
+            font-size: 18px;
+            color: var(--secondary-text);
+            text-decoration: line-through;
+        }
+
+        .limited-stock {
+            background-color: #ffd700;
+            color: #000;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 14px;
+            margin-right: 15px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .description-box {
+            background-color: #222;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .description-box h3 {
+            color: var(--primary-color);
+            font-size: 20px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 5px;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-list li {
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: var(--text-color);
+        }
+
+        .feature-list li strong {
+            color: #ffffff;
+        }
+        
+        .feature-list li::before {
+            content: "✅";
+            margin-left: 10px;
+        }
+        
+        /* Order Form - نموذج الطلب */
+        .order-form {
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .order-form h3 {
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--secondary-text);
+            font-size: 14px;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #444;
+            border-radius: 8px;
+            background-color: #333;
+            color: var(--text-color);
+            box-sizing: border-box;
+            font-size: 16px;
+            text-align: right;
+        }
+        
+        /* CTA Button - زر الطلب */
+        .cta-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            border: none;
+            border-radius: 8px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+            text-decoration: none; /* لزر الواتساب */
+        }
+        
+        .cta-button:hover {
+            background-color: #218838;
+        }
+        
+        /* Footer - التذييل */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            font-size: 12px;
+            color: #555;
+            border-top: 1px solid #222;
+        }
+
+        /* WhatsApp Message Logic - منطق رسالة الواتساب */
+        .hidden-form {
+            display: none;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <a href="https://wa.me/212675522409" class="whatsapp-button-top">
+            <span class="whatsapp-icon"></span>
+            تواصل عبر واتساب
+        </a>
+        <div class="logo-section">
+            <div class="logo-text">
+                <h1>stor of Wolf</h1>
+                <p>متجر لبيع الملابس الفاخرة</p>
+            </div>
+            <img src="data:image/jpeg;base64,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" class="logo-img" alt="شعار المتجر">
+        </div>
+    </header>
+
+    <div class="product-container">
+        
+        <div class="product-image-area">
+            <img src="data:image/jpeg;base64,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
