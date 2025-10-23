@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stor Wolf - سترة النينجا الأنيقة</title>
+  <style>
+    body {
+      font-family: "Tahoma", sans-serif;
+      margin: 0;
+      background: #fff;
+      color: #111;
+      line-height: 1.6;
+    }
+    header {
+      text-align: center;
+      padding: 20px;
+      border-bottom: 2px solid #000;
+    }
+    header img {
+      max-width: 120px;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      padding: 20px;
+    }
+    .gallery img {
+      width: 250px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    .description {
+      padding: 20px;
+      text-align: center;
+    }
+    .description h2 {
+      margin-bottom: 10px;
+    }
+    .price {
+      font-size: 22px;
+      font-weight: bold;
+      margin: 15px 0;
+    }
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #000;
+      border-radius: 8px;
+    }
+    form input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    form button {
+      width: 48%;
+      padding: 10px;
+      margin: 5px 1%;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .buy-btn {
+      background: #000;
+      color: #fff;
+    }
+    .home-btn {
+      background: #ccc;
+    }
+    /* زر واتساب */
+    .whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: #fff;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      text-decoration: none;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    }
+    @media(max-width:600px){
+      .gallery img { width: 100%; }
+      form { width: 90%; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <!-- شعار المتجر -->
+    <img src="data:image/png;base64,PUT-YOUR-LOGO-BASE64-HERE" alt="Stor Wolf Logo">
+    <h1>Stor Wolf</h1>
+  </header>
+
+  <!-- صور المنتوج -->
+  <section class="gallery">
+    <img src="data:image/jpeg;base64,PUT-PRODUCT-IMAGE1-HERE" alt="سترة النينجا">
+    <img src="data:image/jpeg;base64,PUT-PRODUCT-IMAGE2-HERE" alt="سترة النينجا">
+    <img src="data:image/jpeg;base64,PUT-PRODUCT-IMAGE3-HERE" alt="سترة النينجا">
+    <img src="data:image/jpeg;base64,PUT-PRODUCT-IMAGE4-HERE" alt="سترة النينجا">
+    <img src="data:image/jpeg;base64,PUT-PRODUCT-IMAGE5-HERE" alt="سترة النينجا">
+  </section>
+
+  <!-- وصف المنتوج -->
+  <section class="description">
+    <h2>سترة النينجا الأنيقة</h2>
+    <p>
+      سترة عصرية بجودة عالية، مصنوعة من قماش فاخر ومتين.  
+      تتميز بتصميم أنيق مع طبعة تنين فريدة، لا تظهر عليها الحبوب حتى بعد الاستعمال الطويل.  
+      نسخة مطابقة للأصل، تمنحك مظهراً راقياً ومميزاً.
+    </p>
+    <div class="price">249 درهم مغربي</div>
+  </section>
+
+  <!-- نموذج الطلب -->
+  <form>
+    <input type="text" name="city" placeholder="المدينة" required>
+    <input type="text" name="district" placeholder="الحي" required>
+    <input type="tel" name="phone" placeholder="رقم الهاتف" required>
+    <div style="display:flex; justify-content:space-between;">
+      <button type="submit" class="buy-btn">شراء الآن</button>
+      <button type="button" class="home-btn" onclick="window.location.href='index.html'">الصفحة الرئيسية</button>
+    </div>
+  </form>
+
+  <!-- زر واتساب -->
+  <a class="whatsapp" href="https://wa.me/212675522409" target="_blank">💬</a>
+
+</body>
+</html>
